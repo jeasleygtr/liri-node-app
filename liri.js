@@ -4,7 +4,7 @@ var spotify = new Spotify(keys.spotify);
 var client = new Twitter(keys.twitter);
 
 var keys1 = require("./keys.js").twitter;
-var twitter = requrie("twitter");
+var twitter = require("twitter");
 var keys = new twitter ({
     consumer_key: keys1.consumer_key,
     consumer_secret: keys1.consumer_secret,
@@ -82,7 +82,7 @@ function greeting() {
 
                 case options[5]:
                     randomgreet();
-                    logtxt9options[5]);
+                    logtxt(options[5]);
                     break;
 
                 case options[6]:
@@ -158,8 +158,8 @@ function whatelse() {
 function tweet() {
     inquirer.prompt([
         {
-            type: "input";
-            message: "Tweet something on Jeff's twitter account.\nPlease use common sense when tweeting.\nIf you tweet something pro-Trump, i will hunt you down.\n",
+            type: "input",
+            message: "Tweet something on Jeff's twitter account.\nPlease use common sense when tweeting.\nIf you tweet something pro-Trump under my name, I will hunt you down.\n",
             name: "post"
         }
     ]).then(function(res) {
@@ -178,7 +178,7 @@ function tweet() {
 // show tweets
 function tweets() {
     keys.get("statuses/user_timeline", {screen_name: 'jeasleygtr'}, function(error, tweets, response) {
-        if (?error) {
+        if (!error) {
             for (i = tweets.length -1; i >= tweets.length - 21; i--) {
                 if (i < 0) {
                     break; //if account has <20 tweets
@@ -221,7 +221,7 @@ function spotifyasong() {
 			if (res.song === "") {
 				spotify.search({type: "track", query: "The Sign"}, function(err, data) {
 					console.log("\n-------------------------------------------------\n");
-					console.log("Dear user, though you did not input anything valid, I, smart Liri, still have recommendation for you.\nActually neither I or my owner Sunny have seen it before, this is her instructor's mandatory recommendation.\nSunny said if one day she becomes an insturctor,\nshe'll use the same way to recommend whatever she likes to students.");
+					console.log("You did not input anything valid, but I have a recommendation for you");
 					console.log("\n-------------------------------------------------\n");
 					console.log("Artist(s): " + data.tracks.items[5].artists[0].name);
 					console.log("Title: " + data.tracks.items[5].name);
